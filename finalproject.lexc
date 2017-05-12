@@ -1,0 +1,35 @@
+Multichar_Symbols +N
+
+LEXICON Root
+
+Noun;
+Verb;
+
+LEXICON Noun
+
+'fo.cu    Ninf;
+a.'qu%:a Ninf;
+'pac.tu    Ninf;
+'ho%:.mi.ne Ninf;
+spa.ta    Ninf;
+for.'mi%:.ca Ninf;
+ru.ssu  Ninf;
+ves.ti%:.tu Ninf;
+o.'ri.cu.la Ninf;
+'lac.te Ninf;
+'fo%:%.rno Ninf;
+'fe%:%.mi%:%.na Ninf;
+'le%.po%.re Ninf;
+'te%.no%.ro%: Ninf;
+'po%.de Ninf;
+'po%.si%:%.to%: Ninf;
+a.'pi.cu.la Ninf;
+'sco.la Ninf;
+'fa.bri.ca Ninf;
+
+LEXICON Ninf
+
++N+Sg:^m   #;
++N+Pl:^s  #;
+
+

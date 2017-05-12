@@ -1,0 +1,122 @@
+# Vowels
+define V [ a | e | i | o | u | a %: | e %: | i %: | o %: | u %:] ;
+define C [ b | c | d | f | g | j | k | l | m | n | p | q | r | s | t | v ] ;
+define VShort [ a | e | i | o | u ];
+define VLong [ a %: | e %: | i %: | o %: | u %:];
+define VBack [a | o | u];
+define VFront [i | e] ;
+define DStops [t | d] ;
+define BStops [p | b] ;
+define VStops [k | g] ;
+define Obstr [p | b | k | g | t | d ];
+
+read lexc finalproject.lexc
+define Lexicon;
+
+#Lenition
+
+define Syncope V (->) 0 || [ %. \' ] _ [?* %.] ;
+
+define SLenition b (->) 0 , g (->) 0 , d (->) 0 || V (%.) (') _ V ;
+
+define BLenition p (->) b, c (->) g, t (->) d || V (%.) (') _ V ;
+
+define CLenition p (->) b, c (->) g, t (->) d ||  _ (%:) (%.) (') C ;
+
+define LenitionQUtoGU  q u -> g u || _ ;
+
+
+
+#Gemination
+define GLenition Obstr Obstr -> Obstr || V _ V ;
+
+
+#Set of Epenhetic functions
+define Epenthesis1 m (%:) (%.) (') n -> m %. b r || _ ;
+
+define Epenthesis2 n (%:) (%.) (') r -> [n %. d r | r %. n ] || _ ;
+
+define Epenthesis3 m (%:) (%.) (') l -> m %. b l || _ ;
+
+define Epenthesis4 m (%:) (%.) (') r -> m %. b r || _ ;
+
+define Metathesis1 n (%:) (%.) (') r (->) r %. n || _ ;
+
+
+
+define Prosthesis (') s -> e ' s || .#. _ \V ;
+
+define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
+
+define GreatVowelMergerBack u -> o %: || _ \%:;
+
+define GreatVowelMergerFront i \%: -> e %: || _ ;
+
+define HtoF f -> h || .#. (') _ V \V ;
+
+
+#Diphthongization in the Stressed Pos and short
+define ShortFrontHighMid e \%: -> i e %: || [' ?*] _ [\%:] ?* %. ;
+
+define ShortBackHighMid o -> u e %: || ' C* _ \%: ;
+
+
+#Set of Palatalization functions
+define Palatalization1 c (%.) t -> c h || _  ;
+
+define Palatalization2 l (%.) (') t  -> c h || u (%:) _ ;
+
+define Palatalization3 c (%:) (%.) (') l -> j || _ ;
+
+define RaisingFromCH a (%:) (%.) c h -> e c h || _ ;
+
+define LossofDoubleS s s -> j || _ ;
+
+define LossFinal m -> 0 || _ .#. ;
+
+
+#Cleanup Functions for used abstract notation
+define CleanupUlt %: -> 0 || _ ;
+define CleanupUlt1 %' -> 0 || _ ;
+define CleanupUlt2 %. -> 0 || _ ;
+
+
+# Cleanup: remove morpheme boundaries
+define Cleanup "^" -> 0;
+
+read lexc finalproject.lexc
+define Lexicon
+
+define Grammar Lexicon
+.o.
+LossFinal .o.
+Syncope .o.
+SLenition .o.
+GreatVowelMergerBack .o.
+BLenition .o.
+CLenition .o.
+GreatVowelMergerFront .o.
+LossFinal .o.
+LossofDoubleS .o.
+Prosthesis .o.
+Epenthesis1 .o.
+Epenthesis2 .o.
+Epenthesis3 .o.
+Epenthesis4 .o.
+FrontHighMid .o.
+Metathesis1 .o.
+ShortFrontHighMid       .o.
+ShortBackHighMid .o.
+Palatalization1     .o.
+Palatalization2     .o.
+Palatalization3     .o.
+RaisingFromCH   .o.
+ShortBackHighMid .o.
+LenitionQUtoGU .o.
+HtoF .o.
+CleanupUlt .o.
+CleanupUlt1 .o.
+CleanupUlt2 .o.
+Cleanup;
+
+regex Grammar;
