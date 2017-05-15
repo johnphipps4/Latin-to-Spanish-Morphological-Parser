@@ -20,36 +20,34 @@ define Syncope V (->) 0 || [ %. \' ] _ [?* %.] ;
 #Lenition Functions
 define SLenition b (->) 0 , g (->) 0 , d (->) 0 || V (%.) (') _ V ;
 
+#intervocalic position of voiceless obstruents voiced obstruents lenition
 define BLenition p (->) b, c (->) g, t (->) d || V (%.) (') _ V ;
 
+#preconsonantal position of voiceless obstruents to voiced obstruents lenition
 define CLenition p (->) b, c (->) g, t (->) d ||  _ (%:) (%.) (') C ;
 
 define LenitionQUtoGU  q u (->) g u || _ ;
 
 
 
-#Degemination
+#Degemination Function
+
 define GLenition Obstr Obstr -> Obstr || V _ V ;
 
 
 #Set of Epenhetic functions
+
 define Epenthesis1 m (%:) (%.) (') n -> m %. b r || _ ;
-
 define Epenthesis2 n (%:) (%.) (') r -> [n %. d r | r %. n ] || _ ;
-
 define Epenthesis3 m (%:) (%.) (') l -> m %. b l || _ ;
-
 define Epenthesis4 m (%:) (%.) (') r -> m %. b r || _ ;
 
 
 #Basic Metathesis in alveolar nasal + liquid
+
 define Metathesis1 n (%:) (%.) (') r (->) r %. n || _ ;
 
 
-
-define Prosthesis (') s -> e ' s || .#. _ \V ;
-
-define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
 
 #Some of the first morphological rules in vulgar Latin
 define GreatVowelMergerBack u -> o %: || _ \%:;
@@ -72,6 +70,8 @@ define RaisingFromCH a (%:) (%.) c h -> e c h || _ ;
 define LossofDoubleS s s -> j || _ ;
 define LossFinal m -> 0 || _ .#. ;
 define FtoH f -> h || .#. (') _ V \V ;
+define Prosthesis (') s -> e ' s || .#. _ \V ;
+define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
 
 
 
