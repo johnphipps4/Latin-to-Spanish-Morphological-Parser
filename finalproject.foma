@@ -1,4 +1,4 @@
-# Vowels
+ # Vowels
 define V [ a | e | i | o | u | a %: | e %: | i %: | o %: | u %:] ;
 define C [ b | c | d | f | g | j | k | l | m | n | p | q | r | s | t | v ] ;
 define VShort [ a | e | i | o | u ];
@@ -13,21 +13,22 @@ define Obstr [p | b | k | g | t | d ];
 read lexc finalproject.lexc
 define Lexicon;
 
-#Lenition
 
 define Syncope V (->) 0 || [ %. \' ] _ [?* %.] ;
 
+
+#Lenition Functions
 define SLenition b (->) 0 , g (->) 0 , d (->) 0 || V (%.) (') _ V ;
 
 define BLenition p (->) b, c (->) g, t (->) d || V (%.) (') _ V ;
 
 define CLenition p (->) b, c (->) g, t (->) d ||  _ (%:) (%.) (') C ;
 
-define LenitionQUtoGU  q u -> g u || _ ;
+define LenitionQUtoGU  q u (->) g u || _ ;
 
 
 
-#Gemination
+#Degemination
 define GLenition Obstr Obstr -> Obstr || V _ V ;
 
 
@@ -40,6 +41,8 @@ define Epenthesis3 m (%:) (%.) (') l -> m %. b l || _ ;
 
 define Epenthesis4 m (%:) (%.) (') r -> m %. b r || _ ;
 
+
+#Basic Metathesis in alveolar nasal + liquid
 define Metathesis1 n (%:) (%.) (') r (->) r %. n || _ ;
 
 
@@ -48,31 +51,28 @@ define Prosthesis (') s -> e ' s || .#. _ \V ;
 
 define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
 
+#Some of the first morphological rules in vulgar Latin
 define GreatVowelMergerBack u -> o %: || _ \%:;
-
 define GreatVowelMergerFront i \%: -> e %: || _ ;
-
-define HtoF f -> h || .#. (') _ V \V ;
 
 
 #Diphthongization in the Stressed Pos and short
 define ShortFrontHighMid e \%: -> i e %: || [' ?*] _ [\%:] ?* %. ;
-
 define ShortBackHighMid o -> u e %: || ' C* _ \%: ;
 
 
 #Set of Palatalization functions
+
 define Palatalization1 c (%.) t -> c h || _  ;
-
 define Palatalization2 l (%.) (') t  -> c h || u (%:) _ ;
-
 define Palatalization3 c (%:) (%.) (') l -> j || _ ;
-
 define RaisingFromCH a (%:) (%.) c h -> e c h || _ ;
 
+#more specific rules
 define LossofDoubleS s s -> j || _ ;
-
 define LossFinal m -> 0 || _ .#. ;
+define FtoH f -> h || .#. (') _ V \V ;
+
 
 
 #Cleanup Functions for used abstract notation
@@ -113,7 +113,7 @@ Palatalization3     .o.
 RaisingFromCH   .o.
 ShortBackHighMid .o.
 LenitionQUtoGU .o.
-HtoF .o.
+FtoH .o.
 CleanupUlt .o.
 CleanupUlt1 .o.
 CleanupUlt2 .o.
