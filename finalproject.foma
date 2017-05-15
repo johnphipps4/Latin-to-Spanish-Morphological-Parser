@@ -1,4 +1,4 @@
- # Vowels
+# Vowels
 define V [ a | e | i | o | u | a %: | e %: | i %: | o %: | u %:] ;
 define C [ b | c | d | f | g | j | k | l | m | n | p | q | r | s | t | v ] ;
 define VShort [ a | e | i | o | u ];
@@ -9,6 +9,7 @@ define DStops [t | d] ;
 define BStops [p | b] ;
 define VStops [k | g] ;
 define Obstr [p | b | k | g | t | d ];
+define Symbols [%: | %. | ' ] ;
 
 read lexc finalproject.lexc
 define Lexicon;
@@ -72,10 +73,10 @@ define LossFinal m -> 0 || _ .#. ;
 define FtoH f -> h || .#. (') _ V \V ;
 define Prosthesis (') s -> e ' s || .#. _ \V ;
 define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
+deifne LossOfNasalandS n (->) 0 || _ [Symbols* s];
 
 
-
-#Cleanup Functions for used abstract notation
+# Cleanup functions for used abstract notation
 define CleanupUlt %: -> 0 || _ ;
 define CleanupUlt1 %' -> 0 || _ ;
 define CleanupUlt2 %. -> 0 || _ ;
@@ -114,6 +115,7 @@ RaisingFromCH   .o.
 ShortBackHighMid .o.
 LenitionQUtoGU .o.
 FtoH .o.
+LossOfNasalandS .o.
 CleanupUlt .o.
 CleanupUlt1 .o.
 CleanupUlt2 .o.
