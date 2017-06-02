@@ -73,7 +73,7 @@ define LossFinal m -> 0 || _ .#. ;
 define FtoH f -> h || .#. (') _ V \V ;
 define Prosthesis (') s -> e ' s || .#. _ \V ;
 define FrontHighMid i \%: -> e %: || [ ' ?* ] _ ;
-deifne LossOfNasalandS n (->) 0 || _ [Symbols* s];
+define LossOfNasalandS n (->) 0 || _ [Symbols* s];
 
 
 # Cleanup functions for used abstract notation
